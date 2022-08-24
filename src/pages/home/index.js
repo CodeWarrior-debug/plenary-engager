@@ -1,68 +1,61 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./styles.css"
 
 export default function Home() {
-  const getVerseRangeTest = async () => {
-    // return  "First &middot; Second";
-    await axios
-      .get("https://bible-api.com/john%203:16?translation=kjv") //TODO: make dynamic
-    //   .then((response) => {
-    //     console.log(response.data.text);
-    //   })
-      .then((response) => {
-        return response.data.text
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
-  const myVerse = "John 3:16";
-  //const myVerse = getVerseRangeTest();
+    const [verses, setVerses] = useState('');
+    const [interpret, setInterpret] = useState('');
+    const [originals, setOriginals] = useState([]);
+    const [replacers, setReplacers] = useState([]);
+    
 
-  //   const getVerseRangeTest = async () => {
-  //     const response = await getVerseRangeTest2();
-  //     console.log('you made it bro' + response)
-  //    }
+    useEffect(() => {
+      axios
+        .get("https://bible-api.com/judges+2:16-2:18?translation=kjv")
+        .then((res) => {
+          setVerses(res.data.text)
+        });
+    },[])
 
-  //   const replaceVerbiage = (originalText) => {};
+    const getVerses =() => {  //book, startChap, startVerse, endChap, endVerse
+        axios
+          .get("https://bible-api.com/judges+1:16-2:18?translation=kjv")
+          .then((res) => {
+            setVerses(res.data.text)
+          })
+      }
 
-  // // const testVerses = "16 Then the Lord raised up judges,[c] who saved them out of the hands of these raiders. 17 Yet they would not listen to their judges but prostituted themselves to other gods and worshiped them. They quickly turned from the ways of their ancestors, who had been obedient to the Lord’s commands. 18 Whenever the Lord raised up a judge for them, he was with the judge and saved them out of the hands of their enemies as long as the judge lived; for the Lord relented because of their groaning under those who oppressed and afflicted them."
 
-  // originalsArr = [];
-  // replacesArr = [];
 
-  // document.getElementById("swap-btn").addEventListener("click", swapItems);
+//   var table = document.getElementById("swap-tbl");
+  //iterate trough rows
 
-  // var table = document.getElementById("swap-tbl");
-  // //iterate trough rows
+//   function swapItems(){
 
-  // function swapItems(){
+//      for (var i = 0, row; row = table.rows[i]; i++) {
+//         //go through first column
+//         for (var j = 0, col; col = 0; j++) {
 
-  //    for (var i = 0, row; row = table.rows[i]; i++) {
-  //       //go through first column
-  //       for (var j = 0, col; col = 0; j++) {
+//            originals.push(row.cell[j].textContent)
 
-  //          originalsArr.push(row.cell[j].textContent)
+//         }
+//      }
+//      console.log(originals)
+//   }
 
-  //       }
-  //    }
-  //    console.log(originalsArr)
-  // }
+//   if (table){
 
-  // if (table){
+//      var substitutionVerses = testVerses;
 
-  //    var substitutionVerses = testVerses;
-
-  // for (i=0;i<originalsArr.length;i++) {
-  //    var replaced = originalsArr[i];
-  //    var replacer = replacesArr[i];
-  //    var replaceFunc = new RegExp(replaced,"g");
-  //    substitutionVerses=substitutionVerses.replace(replaceFunc, replacer)
-  // }
-  // }
-  // // console.log(substitutionVerses);
+//   for (i=0;i<originalsArr.length;i++) {
+//      var replaced = originalsArr[i];
+//      var replacer = replacesArr[i];
+//      var replaceFunc = new RegExp(replaced,"g");
+//      substitutionVerses=substitutionVerses.replace(replaceFunc, replacer)
+//   }
+//   }
+//   console.log(substitutionVerses);
 
   return (
     <>
@@ -82,7 +75,7 @@ export default function Home() {
               id="original"
               // dangerouslySetInnerHTML={getVerseRangeTest()}
             >
-              {/* <div dangerouslySetInnerHTML={{__html: getVerseRangeTest() }} /> */}
+
               {/* Then the Lord raised up judges,[c] who saved them out of the hands
             of these raiders. 17 Yet they would not listen to their judges but
             prostituted themselves to other gods and worshiped them. They
@@ -93,12 +86,13 @@ export default function Home() {
             relented because of their groaning under those who oppressed and
             afflicted them. */}
 
-              {myVerse}
+              {verses}
             </td>
           </tr>
         </tbody>
       </table>
       <button
+        onClick={getVerses}
         id="import-btn"
         // onClick={getVerseRangeTest}
         style={{ textAlign: "center" }}
