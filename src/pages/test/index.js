@@ -4,27 +4,24 @@ import "./styles.css";
   
   export default class Test extends React.Component {
     state = {
-      persons: []
+      verseRange: ''
     }
   
     componentDidMount() {
-      axios.get(`https://jsonplaceholder.typicode.com/users`)
+      axios.get("https://bible-api.com/john%203:16?translation=kjv")
         .then(res => {
-          const persons = res.data;
-          this.setState({ persons });
+          const verseRange = res.data.text;
+          this.setState({ verseRange });
         })
     }
   
     render() {
       return (
-        <ul>
+        <div>
           {
-            this.state.persons
-              .map(person =>
-                <li key={person.id}>{person.name}</li>
-              )
+            this.state.verseRange
           }
-        </ul>
+        </div>
       )
     }
   }
