@@ -4,8 +4,9 @@ import "./styles.css"
 
 export default function Home() {
 
-    const [verses, setVerses] = useState('');
-    const [interpret, setInterpret] = useState('');
+  const [book, setBook] = useState('');
+  const [chapters, setChapters] = useState([]);
+  const [verses, setVerses] = useState('');
     const [originals, setOriginals] = useState([]);
     const [replacers, setReplacers] = useState([]);
     
@@ -25,6 +26,15 @@ export default function Home() {
             setVerses(res.data.text)
           })
       }
+
+      const getChapters =()=> {
+        axios
+        .get("https://api.scripture.api.bible/v1/bibles/bba9f40183526463-01/books/gen/chapters")
+        .then((res)=> {
+          setChapters([res.data])
+        })
+      }
+
 
 
 
