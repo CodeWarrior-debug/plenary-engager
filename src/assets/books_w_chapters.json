@@ -1,0 +1,333 @@
+﻿[
+    {
+        "label": "Genesis",
+        "value": "GEN",
+        "chapter_count": 50
+    },
+    {
+        "label": "Exodus",
+        "value": "EXO",
+        "chapter_count": 40
+    },
+    {
+        "label": "Leviticus",
+        "value": "LEV",
+        "chapter_count": 27
+    },
+    {
+        "label": "Numbers",
+        "value": "NUM",
+        "chapter_count": 36
+    },
+    {
+        "label": "Deuteronomy",
+        "value": "DEU",
+        "chapter_count": 34
+    },
+    {
+        "label": "Joshua",
+        "value": "JOS",
+        "chapter_count": 24
+    },
+    {
+        "label": "Judges",
+        "value": "JDG",
+        "chapter_count": 21
+    },
+    {
+        "label": "Ruth",
+        "value": "RUT",
+        "chapter_count": 4
+    },
+    {
+        "label": "1 Samuel",
+        "value": "1SA",
+        "chapter_count": 31
+    },
+    {
+        "label": "2 Samuel",
+        "value": "2SA",
+        "chapter_count": 24
+    },
+    {
+        "label": "1 Kings",
+        "value": "1KI",
+        "chapter_count": 22
+    },
+    {
+        "label": "2 Kings",
+        "value": "2KI",
+        "chapter_count": 25
+    },
+    {
+        "label": "1 Chronicles",
+        "value": "1CH",
+        "chapter_count": 29
+    },
+    {
+        "label": "2 Chronicles",
+        "value": "2CH",
+        "chapter_count": 36
+    },
+    {
+        "label": "Ezra",
+        "value": "EZR",
+        "chapter_count": 10
+    },
+    {
+        "label": "Nehemiah",
+        "value": "NEH",
+        "chapter_count": 13
+    },
+    {
+        "label": "Esther",
+        "value": "EST",
+        "chapter_count": 10
+    },
+    {
+        "label": "Job",
+        "value": "JOB",
+        "chapter_count": 42
+    },
+    {
+        "label": "Psalms",
+        "value": "PSA",
+        "chapter_count": 150
+    },
+    {
+        "label": "Proverbs",
+        "value": "PRO",
+        "chapter_count": 31
+    },
+    {
+        "label": "Ecclesiastes",
+        "value": "ECC",
+        "chapter_count": 12
+    },
+    {
+        "label": "Song of Solomon",
+        "value": "SNG",
+        "chapter_count": 8
+    },
+    {
+        "label": "Isaiah",
+        "value": "ISA",
+        "chapter_count": 66
+    },
+    {
+        "label": "Jeremiah",
+        "value": "JER",
+        "chapter_count": 52
+    },
+    {
+        "label": "Lamentations",
+        "value": "LAM",
+        "chapter_count": 5
+    },
+    {
+        "label": "Ezekiel",
+        "value": "EZK",
+        "chapter_count": 48
+    },
+    {
+        "label": "Daniel",
+        "value": "DAN",
+        "chapter_count": 12
+    },
+    {
+        "label": "Hosea",
+        "value": "HOS",
+        "chapter_count": 14
+    },
+    {
+        "label": "Joel",
+        "value": "JOL",
+        "chapter_count": 3
+    },
+    {
+        "label": "Amos",
+        "value": "AMO",
+        "chapter_count": 9
+    },
+    {
+        "label": "Obadiah",
+        "value": "OBA",
+        "chapter_count": 1
+    },
+    {
+        "label": "Jonah",
+        "value": "JON",
+        "chapter_count": 4
+    },
+    {
+        "label": "Micah",
+        "value": "MIC",
+        "chapter_count": 7
+    },
+    {
+        "label": "Nahum",
+        "value": "NAM",
+        "chapter_count": 3
+    },
+    {
+        "label": "Habakkuk",
+        "value": "HAB",
+        "chapter_count": 3
+    },
+    {
+        "label": "Zephaniah",
+        "value": "ZEP",
+        "chapter_count": 3
+    },
+    {
+        "label": "Haggai",
+        "value": "HAG",
+        "chapter_count": 2
+    },
+    {
+        "label": "Zechariah",
+        "value": "ZEC",
+        "chapter_count": 14
+    },
+    {
+        "label": "Malachi",
+        "value": "MAL",
+        "chapter_count": 4
+    },
+    {
+        "label": "Matthew",
+        "value": "MAT",
+        "chapter_count": 28
+    },
+    {
+        "label": "Mark",
+        "value": "MRK",
+        "chapter_count": 16
+    },
+    {
+        "label": "Luke",
+        "value": "LUK",
+        "chapter_count": 24
+    },
+    {
+        "label": "John",
+        "value": "JHN",
+        "chapter_count": 21
+    },
+    {
+        "label": "Acts",
+        "value": "ACT",
+        "chapter_count": 28
+    },
+    {
+        "label": "Romans",
+        "value": "ROM",
+        "chapter_count": 16
+    },
+    {
+        "label": "1 Corinthians",
+        "value": "1CO",
+        "chapter_count": 16
+    },
+    {
+        "label": "2 Corinthians",
+        "value": "2CO",
+        "chapter_count": 13
+    },
+    {
+        "label": "Galatians",
+        "value": "GAL",
+        "chapter_count": 6
+    },
+    {
+        "label": "Ephesians",
+        "value": "EPH",
+        "chapter_count": 6
+    },
+    {
+        "label": "Philippians",
+        "value": "PHP",
+        "chapter_count": 4
+    },
+    {
+        "label": "Colossians",
+        "value": "COL",
+        "chapter_count": 4
+    },
+    {
+        "label": "1 Thessalonians",
+        "value": "1TH",
+        "chapter_count": 5
+    },
+    {
+        "label": "2 Thessalonians",
+        "value": "2TH",
+        "chapter_count": 3
+    },
+    {
+        "label": "1 Timothy",
+        "value": "1TI",
+        "chapter_count": 6
+    },
+    {
+        "label": "2 Timothy",
+        "value": "2TI",
+        "chapter_count": 4
+    },
+    {
+        "label": "Titus",
+        "value": "TIT",
+        "chapter_count": 3
+    },
+    {
+        "label": "Philemon",
+        "value": "PHM",
+        "chapter_count": 1
+    },
+    {
+        "label": "Hebrews",
+        "value": "HEB",
+        "chapter_count": 13
+    },
+    {
+        "label": "James",
+        "value": "JAS",
+        "chapter_count": 5
+    },
+    {
+        "label": "1 Peter",
+        "value": "1PE",
+        "chapter_count": 5
+    },
+    {
+        "label": "2 Peter",
+        "value": "2PE",
+        "chapter_count": 3
+    },
+    {
+        "label": "1 John",
+        "value": "1JN",
+        "chapter_count": 5
+    },
+    {
+        "label": "2 John",
+        "value": "2JN",
+        "chapter_count": 1
+    },
+    {
+        "label": "3 John",
+        "value": "3JN",
+        "chapter_count": 1
+    },
+    {
+        "label": "Jude",
+        "value": "JUD",
+        "chapter_count": 1
+    },
+    {
+        "label": "Revelation",
+        "value": "REV",
+        "chapter_count": 22
+    }
+]
+

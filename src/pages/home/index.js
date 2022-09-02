@@ -4,6 +4,9 @@ import "./styles.css"
 
 export default function Home() {
 
+// Best Reference = https://scripture.api.bible/livedocs 
+// API Key to use = 016b11d5817b02cc37b96070428b0525
+
   const [book, setBook] = useState('');
   const [chapters, setChapters] = useState([]);
   const [verses, setVerses] = useState('');
