@@ -6,7 +6,7 @@ import DivTest from "../components/div_test";
 
 export default function TestFunc() {
   const booksArray = require("../../assets/books_w_chapters.json");
-  const [chapters, setChapters] = useState("");
+  const [chapters, setChapters] = useState(50);
   const [book, setBook] = useState("");
   const [label, setLabel] = useState("");
   const [chaptersArr, setChaptersArr] = useState([]);
@@ -42,7 +42,7 @@ function populateChapters(max){
     <>
       <h1>Hello!</h1>
       <BookSelect />
-      <ChapterSelect chapters={chapters}/>
+      {/* <ChapterSelect chapters={chapters}/> */}
       <DivTest number={label} />
       <DivTest number={book} />
       <DivTest number={chapters} />

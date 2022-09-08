@@ -17,3 +17,5 @@ export default function ArrayFromMax(props) {
     <div>{props.number}</div>
   )
 }
+
+
