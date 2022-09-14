@@ -1,18 +1,25 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./styles.css"
+import Select from "react-select";
 
 export default function Home() {
 
 // Best Reference = https://scripture.api.bible/livedocs 
 // API Key to use = 016b11d5817b02cc37b96070428b0525
-
+  
+  const bibleID="bba9f40183526463-01";
+  const booksArray = require("../../assets/books_w_chapters.json");
   const [book, setBook] = useState('');
   const [chapters, setChapters] = useState([]);
   const [verses, setVerses] = useState('');
     const [originals, setOriginals] = useState([]);
     const [replacers, setReplacers] = useState([]);
     
+
+    const BookSelect = () => (
+      <Select options={booksArray} />
+    );
 
     useEffect(() => {
       axios
@@ -30,11 +37,18 @@ export default function Home() {
           })
       }
 
+
+
       const getChapters =()=> {
         axios
-        .get("https://api.scripture.api.bible/v1/bibles/bba9f40183526463-01/books/gen/chapters")
+
+        .get(`https://api.scripture.api.bible/v1/bibles/${bibleID}/books/gen/chapters`,
+          {headers: {'api-key':'016b11d5817b02cc37b96070428b0525'}}
+              )
         .then((res)=> {
-          setChapters([res.data])
+          console.log(res.data)
+          setChapters(res.data)
+          console.log(chapters)
         })
       }
 
@@ -80,6 +94,10 @@ export default function Home() {
       </div>
 
       <th>Scripture Passage</th>
+      <div>
+        <BookSelect />
+        <BookSelect />
+      </div>
       <table style={{ margin: "50px auto" }}>
         <tbody>
           <tr>
@@ -105,7 +123,8 @@ export default function Home() {
         </tbody>
       </table>
       <button
-        onClick={getVerses}
+        // onClick={getVerses}
+        onClick={getChapters}
         id="import-btn"
         // onClick={getVerseRangeTest}
         style={{ textAlign: "center" }}

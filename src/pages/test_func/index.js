@@ -56,7 +56,7 @@ export default function TestFunc() {
   const evalBookChap=()=>{
     
     setBookDashChap(label + '-' + stampChap)
-    console.log('bookdashchap is' + bookDashChap)
+    console.log('bookdashchap is ' + bookDashChap)
     console.log(verseCount.bookDashChap)
   }
 

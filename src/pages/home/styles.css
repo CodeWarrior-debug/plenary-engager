@@ -2,3 +2,11 @@ th{
     margin:auto;
     justify-content:center;
 }
+
+.css-b62m3t-container {
+    max-width: 200px;
+    display:flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: start;
+}
