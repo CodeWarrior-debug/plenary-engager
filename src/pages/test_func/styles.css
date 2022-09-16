@@ -2,3 +2,15 @@ th{
     margin:auto;
     justify-content:center;
 }
+
+.css-1s2u09g-control{
+    min-width: 300px;
+}
+
+.css-b62m3t-container {
+    width: 400px;
+    display:flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: start;
+}
