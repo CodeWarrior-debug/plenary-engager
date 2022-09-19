@@ -19,6 +19,7 @@ export default function TestFunc() {
   //Chapter Methods
   const [chapters, setChapters] = useState("");
   const [chaptersArr, setChaptersArr] = useState([]);
+  const [chapterStartLabel, setChapterStartLabel] =useState("");
   const [stampChap, setStampChap] = useState("");
   
   
@@ -29,8 +30,8 @@ export default function TestFunc() {
 
 
   useEffect(() => {
-    console.log(verseCount['Genesis-3'])
-    console.log(limitArr(25,allChaptersArr));
+    // console.log(verseCount['Genesis-3'])
+    // console.log(limitArr(25,allChaptersArr));
   },[])
 
   const limitArr = (e, arr) => {
@@ -38,6 +39,7 @@ export default function TestFunc() {
   }
 
   let updateChapters = (e) => {
+    //sets book and chapter values
     setBook(e.value);
     setBookLabel(e.label);
     setChaptersArr(
@@ -46,8 +48,9 @@ export default function TestFunc() {
   };
 
   let updateVerses = (e) => {
+    const maxVerse = verseCount[bookLabel + '-' + e.label]
     setVerseArr(
-      limitArr(e.chapter_count,allChaptersArr)
+      limitArr(maxVerse,allVersesArr)
     )
   };
   
@@ -79,7 +82,7 @@ export default function TestFunc() {
   );
 
   const ChapterSelect = () => (
-    <Select value={{bookLabel}} options={chaptersArr} onChange={(e) => {updateVerses(e)}} />
+    <Select options={chaptersArr} onChange={(e) => {updateVerses(e)}} />
   );
 
   const VerseSelect = () => (
