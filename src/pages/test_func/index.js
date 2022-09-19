@@ -1,4 +1,4 @@
-// import "./styles.css";
+import "./styles.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
@@ -12,14 +12,14 @@ export default function TestFunc() {
   const verseCount=require("../../assets/book_chapters_w_versecounts.json");
   
   //Verse Methods
-  const [verse, setVerse]=useState("");
+  const [startVerse, setStartVerse]=useState("");
   const [verseArr, setVerseArr] = useState([]);
   
   
   //Chapter Methods
   const [chapters, setChapters] = useState("");
   const [chaptersArr, setChaptersArr] = useState([]);
-  const [chapterStartLabel, setChapterStartLabel] =useState("");
+  const [chapterStart, setChapterStart] =useState("");
   const [stampChap, setStampChap] = useState("");
   
   
@@ -38,37 +38,35 @@ export default function TestFunc() {
    return arr.filter((i) => i.label<=e);
   }
 
-  let updateChapters = (e) => {
+  const updateChapters = (e) => {
     //sets book and chapter values
-    setBook(e.value);
+    // setBook(e.value);
     setBookLabel(e.label);
     setChaptersArr(
       limitArr(e.chapter_count,allChaptersArr)
     )
   };
 
-  let updateVerses = (e) => {
-    const maxVerse = verseCount[bookLabel + '-' + e.label]
+  const updateVerses = (e) => {
+    setChapterStart(e.label);
+    let maxVerse = verseCount[bookLabel + '-' + e.label]
     setVerseArr(
       limitArr(maxVerse,allVersesArr)
     )
   };
+
+  const pickStartVerse = (e) => {
+    setStartVerse(e.label);
+  }
   
-    const populateChapters = (max) => {
-      let chapArr = [];
-      for (var i = 1; i <= max; i++) {
-        chapArr.push({ label: i }); //label has to be an object
-      }
-      setChaptersArr(chapArr);
-    };
   
-    const populateVerses = (max) => {
-      let verseArr = [];
-      for (var i = 1; i <= max; i++) {
-        verseArr.push({ label: i }); //label has to be an object
-      }
-      setVerseArr(verseArr);
-    };
+    // const updateVerses = (e) => {
+    //   let verseArr = [];
+    //   for (var i = 1; i <= max; i++) {
+    //     verseArr.push({ label: i }); //label has to be an object
+    //   }
+    //   setVerseArr(verseArr);
+    // };
 
   // const evalBookChap=()=>{
     
@@ -86,7 +84,7 @@ export default function TestFunc() {
   );
 
   const VerseSelect = () => (
-    <Select options={verseArr} />
+    <Select options={verseArr} onChange={(e) => {pickStartVerse(e)}}/>
   );
 
   return (
@@ -94,12 +92,10 @@ export default function TestFunc() {
       <h1>Choose A Range of Verses</h1>
       <BookSelect />
       <ChapterSelect chapters={chapters} />
-      <VerseSelect verse={verse} />
-      <DivTest number={book} />
-      <DivTest number={bookLabel} />
-      <DivTest number={chapters} />
-      <DivTest number={stampChap} />
-      <DivTest number={verse} />
+      <VerseSelect startVerse={startVerse} />
+      <DivTest id="bookText" number={bookLabel} />
+      <DivTest id="chapStartNum" number={chapterStart} />
+      <DivTest id="verseStartNum" number={startVerse} />
     </>
   );
 }
