@@ -365,6 +365,7 @@ export default function Home() {
     bookLabel,
     chapterStart,
     startVerse,
+    endVerse,
     chosen_translation
   ) => {
     // endChap, endVerse
