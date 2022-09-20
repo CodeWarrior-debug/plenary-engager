@@ -427,6 +427,7 @@ export default function Home() {
 
   const VerseSelect = () => (
     <Select
+    value={startVerse}
       options={verseArr}
       onChange={(e) => {
         pickStartVerse(e);
@@ -451,13 +452,28 @@ export default function Home() {
       });
   }, []);
 
-  // const getVerses =(book, startChap, startVerse,translation) => {  // endChap, endVerse
-  //     axios
-  //       .get(`https://bible-api.com/${book}+${startChap}:${startVerse}?translation=${translation}}`)
-  //       .then((res) => {
-  //         setVerses(res.data.text)
-  //       })
-  //   }
+  const table = document.getElementById("swap-tbl");
+// iterate trough rows 
+
+function swapItems(){
+
+  //  for (var i = 0, row; row = table.rows[i]; i++) {
+      //go through first column
+
+      let holderArr = [];
+      for (let row of table.rows) 
+      {
+          for(let cell of row.cells) 
+          {
+             let val = cell.innerText; // your code below
+             holderArr.push(val);
+
+          }
+      }
+
+  //  }
+   console.log(originals)
+}
 
   // const getChapters =()=> {
   //   axios
@@ -480,7 +496,7 @@ export default function Home() {
         replacements. Convey the sense of Scripture that may come across better
         in another language, or in another translation!
       </div>
-      <BookSelect />
+      <BookSelect value={bookLabel}/>
       <ChapterSelect chapters={chapters} />
       <VerseSelect startVerse={startVerse} />
       <VerseSelectEnd endVerse={endVerse} />
@@ -505,11 +521,10 @@ export default function Home() {
           bookLabel,
           chapterStart,
           startVerse,
+          endVerse,
           chosen_translation
         )}
-        // onClick={getChapters}
         id="import-btn"
-        // onClick={getVerseRangeTest}
         style={{ textAlign: "center" }}
       >
         Import Verses
@@ -529,7 +544,7 @@ export default function Home() {
         </tbody>
       </table>
 
-      <button id="swap-btn" style={{ textAlign: "center" }}>
+      <button id="swap-btn" style={{ textAlign: "center" }} onClick={swapItems}>
         Re-word Now!
       </button>
 
@@ -554,21 +569,7 @@ export default function Home() {
     </>
   );
 
-  // {/* var table = document.getElementById("swap-tbl");
-  // iterate trough rows */}
 
-  // function swapItems(){
-
-  //    for (var i = 0, row; row = table.rows[i]; i++) {
-  //       //go through first column
-  //       for (var j = 0, col; col = 0; j++) {
-
-  //          originals.push(row.cell[j].textContent)
-
-  //       }
-  //    }
-  //    console.log(originals)
-  // }
 
   // if (table){
 
