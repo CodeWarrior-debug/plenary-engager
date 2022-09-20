@@ -24,7 +24,11 @@ const Button = () => {
 
   return (
         <>
-    <Button />
+    
+    <button onClick={storeItems}>
+        Store Verses
+      </button>
+
       <table id="mytab1">
   <thead>
     <tr>
