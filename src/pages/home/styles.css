@@ -10,3 +10,20 @@ th{
     align-items: center;
     justify-content: start;
 }
+
+.wrapper{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+
+td{
+    display:block;
+    border-style: solid;
+}
+
+/* table{
+    border-style: solid;
+} */
+

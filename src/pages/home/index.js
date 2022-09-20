@@ -8,7 +8,7 @@ export default function Home() {
   // Best Reference = https://scripture.api.bible/livedocs
   // API Key to use = 016b11d5817b02cc37b96070428b0525
 
-  const bibleID = "bba9f40183526463-01";
+  // const bibleID = "bba9f40183526463-01";
   const booksArray = require("../../assets/books_w_chapters.json");
   const [originals, setOriginals] = useState([]);
   const [replacers, setReplacers] = useState([]);
@@ -347,19 +347,20 @@ export default function Home() {
   const chosen_translation = "bbe";
 
   //Verse Methods
-  const [startVerse, setStartVerse] = useState("");
-  const [endVerse, setEndVerse] = useState("");
+  const [startVerse, setStartVerse] = useState(1);
+  const [endVerse, setEndVerse] = useState(2);
   const [verses, setVerses] = useState("");
   const [verseArr, setVerseArr] = useState([]);
+  const [versesReword, setVersesReword] = useState("");
 
   //Chapter Methods
   const [chapters, setChapters] = useState("");
   const [chaptersArr, setChaptersArr] = useState([]);
-  const [chapterStart, setChapterStart] = useState("");
+  const [chapterStart, setChapterStart] = useState(1);
 
   //Book Methods
   const [book, setBook] = useState("");
-  const [bookLabel, setBookLabel] = useState("");
+  const [bookLabel, setBookLabel] = useState("Genesis");
 
   const getVerses = (
     bookLabel,
@@ -377,7 +378,6 @@ export default function Home() {
         setVerses(res.data.text);
       });
   };
-
 
   const limitArr = (e, arr) => {
     return arr.filter((i) => i.label <= e);
@@ -427,7 +427,7 @@ export default function Home() {
 
   const VerseSelect = () => (
     <Select
-    value={startVerse}
+      value={startVerse}
       options={verseArr}
       onChange={(e) => {
         pickStartVerse(e);
@@ -452,28 +452,19 @@ export default function Home() {
       });
   }, []);
 
-  const table = document.getElementById("swap-tbl");
-// iterate trough rows 
+  function swapItems(verses, originals, replacers) {
+    var substitutionVerses = verses;
 
-function swapItems(){
+    for (let i = 0; i < originals.length; i++) {
+      var replaced = originals[i];
+      var replacer = replacers[i];
+      var replaceFunc = new RegExp(replaced, "g");
+      substitutionVerses = substitutionVerses.replace(replaceFunc, replacer);
+    }
+    console.log(substitutionVerses);
+    setVersesReword(substitutionVerses);
+  }
 
-  //  for (var i = 0, row; row = table.rows[i]; i++) {
-      //go through first column
-
-      let holderArr = [];
-      for (let row of table.rows) 
-      {
-          for(let cell of row.cells) 
-          {
-             let val = cell.innerText; // your code below
-             holderArr.push(val);
-
-          }
-      }
-
-  //  }
-   console.log(originals)
-}
 
   // const getChapters =()=> {
   //   axios
@@ -488,6 +479,38 @@ function swapItems(){
   //   })
   // }
 
+  const mytab1 = document.getElementById("originalsTab1");
+  const mytabl2 = document.getElementById("replaceTab1");
+
+  const feedItems = () => {
+    let storeArr = [];
+
+    for (let row of mytab1.rows) {
+      for (let cell of row.cells) {
+        let val = cell.innerText; // your code below
+        storeArr.push(val);
+      }
+    }
+    setOriginals(storeArr);
+  };
+
+  const feedItems2 = () => {
+    let storeArr = [];
+
+    for (let row2 of mytabl2.rows) {
+      for (let cell2 of row2.cells) {
+        let val = cell2.innerText; // your code below
+        storeArr.push(val);
+      }
+    }
+    setReplacers(storeArr);
+  };
+
+  const storeItems = () => {
+    feedItems();
+    feedItems2();
+  };
+
   return (
     <>
       <h1>Choose A Range of Verses</h1>
@@ -496,14 +519,14 @@ function swapItems(){
         replacements. Convey the sense of Scripture that may come across better
         in another language, or in another translation!
       </div>
-      <BookSelect value={bookLabel}/>
+      <BookSelect value={bookLabel} />
       <ChapterSelect chapters={chapters} />
       <VerseSelect startVerse={startVerse} />
       <VerseSelectEnd endVerse={endVerse} />
       <DivTest id="bookText" number={bookLabel} />
       <DivTest id="chapStartNum" number={chapterStart} />
       <DivTest id="verseStartNum" number={startVerse} />
-      <DivTest id="verseStartNum" number={endVerse} />
+      <DivTest id="verseEndNum" number={endVerse} />
       <h1>Interpretext Generator</h1>
 
       <th>Scripture Passage</th>
@@ -529,22 +552,53 @@ function swapItems(){
       >
         Import Verses
       </button>
+      <div className="wrapper">
+        <table id="originalsTab1">
+          <thead>
+            {/* <tr>
+      <th>header1</th>
+    </tr> */}
+          </thead>
+          <tbody>
+            <tr>
+              <td>judge</td>
+              <td>raider</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table id="replaceTab1">
+          <thead>
+            {/* <tr>
+      <th>header1</th>
+    </tr> */}
+          </thead>
+          <tbody>
+            <tr>
+              <td>tribal chieftain</td>
+              <td>marauder</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* 
       <th>Original</th>
       <th>Replacement</th>
-      <table id="swap-tbl" style={{ margin: "50px auto", border: "1px solid" }}>
-        <tbody>
-          <tr>
-            <td>judge</td>
-            <td>tribal chieftain</td>
-          </tr>
-          <tr>
-            <td>raider</td>
-            <td>marauder</td>
-          </tr>
-        </tbody>
-      </table>
+   */}
 
-      <button id="swap-btn" style={{ textAlign: "center" }} onClick={swapItems}>
+      <button
+        id="swap-btn"
+        style={{ textAlign: "center" }}
+        onClick={storeItems}
+      >
+        Re-word Now!
+      </button>
+      <button
+        id="swap-btn"
+        style={{ textAlign: "center" }}
+        onClick={swapItems(verses, originals, replacers)}
+      >
         Re-word Now!
       </button>
 
@@ -553,23 +607,13 @@ function swapItems(){
         <tbody>
           <tr>
             <td style={{ border: "1px solid" }} id="replacer">
-              Then the Lord raised up judges,[c] who saved them out of the hands
-              of these raiders. 17 Yet they would not listen to their judges but
-              prostituted themselves to other gods and worshiped them. They
-              quickly turned from the ways of their ancestors, who had been
-              obedient to the Lord’s commands. 18 Whenever the Lord raised up a
-              judge for them, he was with the judge and saved them out of the
-              hands of their enemies as long as the judge lived; for the Lord
-              relented because of their groaning under those who oppressed and
-              afflicted them.
+              {/* {versesReword} */}
             </td>
           </tr>
         </tbody>
       </table>
     </>
   );
-
-
 
   // if (table){
 
@@ -615,30 +659,4 @@ function swapItems(){
 
   //   var table = document.getElementById("swap-tbl");
   //iterate trough rows
-
-  //   function swapItems(){
-
-  //      for (var i = 0, row; row = table.rows[i]; i++) {
-  //         //go through first column
-  //         for (var j = 0, col; col = 0; j++) {
-
-  //            originals.push(row.cell[j].textContent)
-
-  //         }
-  //      }
-  //      console.log(originals)
-  //   }
-
-  //   if (table){
-
-  //      var substitutionVerses = testVerses;
-
-  //   for (i=0;i<originalsArr.length;i++) {
-  //      var replaced = originalsArr[i];
-  //      var replacer = replacesArr[i];
-  //      var replaceFunc = new RegExp(replaced,"g");
-  //      substitutionVerses=substitutionVerses.replace(replaceFunc, replacer)
-  //   }
-  //   }
-  //   console.log(substitutionVerses);
 }
