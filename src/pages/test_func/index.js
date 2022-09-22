@@ -2,7 +2,7 @@ import "./styles.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
-import DivTest from "../components/div_test";
+import DivTest from "../../components/div_test";
 
 export default function TestFunc() {
   //Common Resources
