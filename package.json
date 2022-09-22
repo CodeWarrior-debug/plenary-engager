@@ -1,8 +1,8 @@
 {
   "name": "plenary-engager",
   "version": "0.1.0",
-  "homepage": "http://CodeWarrior-debug.github.io/plenary-engager",
-  "private": true,
+  "homepage": "https://CodeWarrior-debug.github.io/plenary-engager",
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
