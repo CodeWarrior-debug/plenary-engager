@@ -2,13 +2,9 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./styles.css";
 import Select from "react-select";
-import DivTest from "../../components/div_test";
 import SwapTextArea from "../../components/swapTextArea";
 
 export default function Home() {
-  // Best Reference = https://scripture.api.bible/livedocs
-  // API Key to use = 016b11d5817b02cc37b96070428b0525
-  // const bibleID = "bba9f40183526463-01";
 
   const booksArray = require("../../assets/books_w_chapters.json");
   const [selectedOption, setSelectedOption] = useState("none");
@@ -336,8 +332,6 @@ export default function Home() {
 
 
 
-
-
   // function swapItems(verses, originals, replacers) {
 
     // let substitutionVerses = verses;
@@ -352,39 +346,7 @@ export default function Home() {
     // return
   // }
 
-  const mytab1 = document.getElementById("originalsTab1");
-  const mytabl2 = document.getElementById("replaceTab1");
-
-  const feedItems = () => {
-    let storeArr = [];
-
-    for (let row of mytab1.rows) {
-      for (let cell of row.cells) {
-        let val = cell.innerText; // your code below
-        storeArr.push(val);
-      }
-    }
-    setOriginals(storeArr);
-  };
-
-  const feedItems2 = () => {
-    let storeArr = [];
-
-    for (let row2 of mytabl2.rows) {
-      for (let cell2 of row2.cells) {
-        let val = cell2.innerText; // your code below
-        storeArr.push(val);
-      }
-    }
-    setReplacers(storeArr);
-  };
-
-  const storeItems = () => {
-    feedItems();
-    feedItems2();
-    console.log(originals)
-    console.log(replacers)
-  };
+ 
 
   return (
     <>
@@ -401,7 +363,7 @@ export default function Home() {
       <h1>Interpretext Generator</h1>
 
       <th>Scripture Passage</th>
-      <table style={{ margin: "50px auto" }}>
+      <table style={{ margin: "50px auto", contenteditable: "true" }}>
         <tbody>
           <tr>
             <td style={{ border: "1px solid" }} id="original">
@@ -421,65 +383,16 @@ export default function Home() {
         id="import-btn"
         style={{ textAlign: "center" }}
       >
-        Import Verses
-      </button>
-      <div className="wrapper">
-        <table id="originalsTab1">
-          <thead>
-            {/* <tr>
-      <th>header1</th>
-    </tr> */}
-          </thead>
-          <tbody>
-            <tr>
-              <td>judge</td>
-              <td>raider</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <table id="replaceTab1">
-          <thead>
-            {/* <tr>
-      <th>header1</th>
-    </tr> */}
-          </thead>
-          <tbody>
-            <tr>
-              <td>tribal chieftain</td>
-              <td>marauder</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* 
-      <th>Original</th>
-      <th>Replacement</th>
-   */}
-
-      <button
-        id="swap-btn"
-        style={{ textAlign: "center" }}
-        onClick={storeItems}
-      >
-        Store Items Test
-      </button>
-      <button
-        id="swap-btn"
-        style={{ textAlign: "center" }}
-        // onClick={swapItems(verses, originals, replacers)}
-      >
-        Re-word Now!
+        Why is this button running automatically?
       </button>
 
-      <SwapTextArea verses={verses} replacers={replacers} originals={originals}/>
+      <SwapTextArea verses={verses}/>
 
       <th>Passage Re-worded</th>
-      <table style={{ margin: "50px auto;" }}>
+      <table style={{ margin: "50px auto" }}>
         <tbody>
           <tr>
-            <td style={{ border: "1px solid" }} id="replacer">
+            <td style={{ border: "1px solid"}} id="replacer" >
               {/* {versesReword} */}
             </td>
           </tr>
@@ -501,8 +414,12 @@ export default function Home() {
   // }
   // console.log(substitutionVerses);
 
-// 
-  // const getChaptersFromBibleAPI =()=> {
+  // Best Reference = https://scripture.api.bible/livedocs
+  // API Key to use = 016b11d5817b02cc37b96070428b0525
+  // const bibleID = "bba9f40183526463-01";
+
+
+  // const getChaptersFromAPI-Bible =()=> {
   //   axios
 
   //   .get(`https://api.scripture.api.bible/v1/bibles/${bibleID}/books/gen/chapters`,
