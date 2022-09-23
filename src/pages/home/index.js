@@ -11,8 +11,7 @@ export default function Home() {
   const [selectedOption2, setSelectedOption2] = useState("none");
   const [selectedOption3, setSelectedOption3] = useState("none");
   const [selectedOption4, setSelectedOption4] = useState("none");
-  const [originals, setOriginals] = useState([]);
-  const [replacers, setReplacers] = useState([]);
+
   //Common Resources
   const allChapsVersesArr = [
     {value: 1, label: 1 },
@@ -203,7 +202,6 @@ export default function Home() {
   const [verseArr, setVerseArr] = useState([]);
 
   //Chapter Methods
-  const [chapters, setChapters] = useState("");
   const [chaptersArr, setChaptersArr] = useState([]);
   const [chapterStart, setChapterStart] = useState("");
 
@@ -329,23 +327,6 @@ export default function Home() {
         setVerses(res.data.text);
       });
   }, []);
-
-
-
-  // function swapItems(verses, originals, replacers) {
-
-    // let substitutionVerses = verses;
-
-    // for (let i = 0; i < originals.length; i++) {
-    //   let replaced = originals[i];
-    //   let replacer = replacers[i];
-    //   const replaceFunc = new RegExp(replaced, "g");
-    //   substitutionVerses = substitutionVerses.replace(replaceFunc, replacer);
-    // }
-    // setVersesReword(substitutionVerses);
-    // return
-  // }
-
  
 
   return (
@@ -357,13 +338,13 @@ export default function Home() {
         in another language, or in another translation!
       </div>
       <BookSelect value={bookLabel} />
-      <ChapterSelect chapters={chapters} />
+      <ChapterSelect chapters={chapterStart} />
       <VerseSelect startVerse={startVerse} />
       <VerseSelectEnd endVerse={endVerse} />
       <h1>Interpretext Generator</h1>
 
       <th>Scripture Passage</th>
-      <table style={{ margin: "50px auto", contenteditable: "true" }}>
+      <table style={{ margin: "50px auto"}}>
         <tbody>
           <tr>
             <td style={{ border: "1px solid" }} id="original">
@@ -381,19 +362,21 @@ export default function Home() {
           chosen_translation
         )}
         id="import-btn"
-        style={{ textAlign: "center" }}
+        style={{ textAlign: "center", backgroundColor: "white",color: "white",border: "1px solid white"}}
       >
-        Why is this button running automatically?
+        Easy Button
       </button>
+      
 
       <SwapTextArea verses={verses}/>
 
       <th>Passage Re-worded</th>
+
       <table style={{ margin: "50px auto" }}>
         <tbody>
           <tr>
             <td style={{ border: "1px solid"}} id="replacer" >
-              {/* {versesReword} */}
+
             </td>
           </tr>
         </tbody>
