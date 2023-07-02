@@ -73,6 +73,10 @@ const SwapText = React.memo((props) => {
     setVersesReword("");
   };
 
+  const handleRewordChange = (evt) => {
+    setVersesReword(evt.currentTaret.value);
+  };
+
   return (
     <>
       <div>

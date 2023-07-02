@@ -42,6 +42,10 @@ export default function Home() {
     }
   };
 
+  const handleStore = () => {
+
+  };
+
   const limitArr = (e, arr) => {
     //returns chapters and verses list that is <= the number of chapters/verses in book
     return arr.filter((i) => i.label <= e);
@@ -140,13 +144,13 @@ export default function Home() {
         substitutes. Convey the sense of Scripture that may come across better
         in the original language, another translation and/or manner.
       </div>
+  {/* SELECTORS */}
       <div className=" ml-48 mt-8 w-full grid grid-cols-10 place-items-start mb-8 mr-48">
         <div className="col-span-2"></div>
         <div className="col-span-1">
           <h6 className="text-center font-extrabold">Book</h6>
           <BookSelect value={bookLabel} />
         </div>
-
         <div className="col-span-1">
           <h6 className="text-center font-extrabold">Chapter</h6>
           <ChapterSelect chapters={chapterStart} />
@@ -162,6 +166,7 @@ export default function Home() {
 
         <div className="col-span-2"></div>
       </div>
+  {/* SCRIPTURE DISPLAY */}
       <h2 className="text-center font-extrabold text-4xl mt-12 text-gray-500">
         Interpretext Generator
       </h2>
@@ -206,23 +211,14 @@ export default function Home() {
       </button> 
       
       <h3 className="text-center mt-4 font-bold text-red-400">Passage Re-worded</h3>
-
+    {/* DISPLAY OF SUBSTITUTE WORDS AND REWORDED TEXT */}
 <div >
-
+        
       <SwapText verses={verses} />
 </div>
 
 
-      {/* <table className="margin-12 m-auto">
-        <tbody >
-          <tr>
-            <td className="mt-4 border-solid border-black border-2 p-2" id="replacer">
-            <SwapText verses={verses} />
 
-            </td>
-          </tr>
-        </tbody>
-      </table> */}
     </>
   );
 }
