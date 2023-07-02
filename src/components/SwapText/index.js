@@ -76,6 +76,7 @@ const SwapText = React.memo((props) => {
   return (
     <>
       <div>
+        {/* original words */}
         <table
           id="originalsTab1"
           contentEditable={true}
@@ -88,7 +89,7 @@ const SwapText = React.memo((props) => {
             </tr>
           </tbody>
         </table>
-
+      {/* replacement words */}
         <table
           id="replaceTab1"
           contentEditable={true}
@@ -110,7 +111,7 @@ const SwapText = React.memo((props) => {
       <button className="bg-gray-300 p-2 rounded hover:scale-90" onClick={clearReword}>Clear 👇 Reword</button>
     </div>
     </div>
-      <div>{versesReword}</div>
+      <div className="border-black border-2 w-3/5 m-auto mt-4 p-2">{versesReword}</div>
     </>
   );
 });
