@@ -2,28 +2,43 @@
 import React, { useState } from "react";
 
 const SwapText = React.memo((props) => {
+  // KEY VARIABLES
   const [versesReword, setVersesReword] = useState("");
-
+  const mytab1 = document.getElementById("originalsTab1");
+  const mytabl2 = document.getElementById("replaceTab1");
   let substitutionVerses = props.verses;
+  
+  // TEST AREA
+const addCells = () => {
+  let row = mytab1.rows[0];
+  let cell = row.insertCell(-1);
+  let row2 = mytabl2.rows[0];
+  let cell2 = row2.insertCell(-1);
+  cell.outerHTML = "<td className='border-gray-400 border-2'></td>";
+  cell2.outerHTML = "<td className='border-gray-400 border-2'></td>";
+  
 
-  const storeItems = async () => {
+};
+  //*****END TEST AREA
+
+
+  const storeItems = async () => {  //collects the lists of original and replacement words
     let originals = await feedItems();
     let replacers = await feedItems2();
     swapItems(originals, replacers);
   };
 
-  const swapItems = async (originals, replacers) => {
-    if (!substitutionVerses || !originals[0] || !replacers[0]) {
+  const swapItems = async (originals, replacers) => { //if proper conditions met, runs key function "replaceText"
+    if (!substitutionVerses || !originals.length>0 || !replacers.length>0) {
       setVersesReword("");
       return "";
     }
     let replacedText = await replaceText(originals, replacers);
     setReword(replacedText);
-    // console.log("complete");
   };
 
-  //key function of this program
-  const replaceText = (originals, replacers) => {
+  
+  const replaceText = (originals, replacers) => { //key function of this program
     for (let i = 0; i < originals.length; i++) {
       let replaced = originals[i];
       let replacer = replacers[i];
@@ -37,15 +52,15 @@ const SwapText = React.memo((props) => {
     setVersesReword(subVerses);
   };
 
-  const processReword = async() => {
+  const processReword = async() => { //runs both the preparation and the key functions of this program
     await storeItems();
     await swapItems();
   };
 
 
-  const feedItems = async () => {
+  const feedItems = async () => { //collects the words in the first table and stores them into originals array
     let storeArr = [];
-    const mytab1 = document.getElementById("originalsTab1");
+    
 
     for (let row of mytab1.rows) {
       for (let cell of row.cells) {
@@ -56,10 +71,10 @@ const SwapText = React.memo((props) => {
     return storeArr;
   };
 
-  const feedItems2 = async () => {
+  const feedItems2 = async () => { //collects the words in the second table and stores them into replacers array
     let storeArr = [];
 
-    const mytabl2 = document.getElementById("replaceTab1");
+    
     for (let row2 of mytabl2.rows) {
       for (let cell2 of row2.cells) {
         let val = cell2.innerText; 
@@ -73,36 +88,36 @@ const SwapText = React.memo((props) => {
     setVersesReword("");
   };
 
-  const handleRewordChange = (evt) => {
-    setVersesReword(evt.currentTaret.value);
-  };
+  // const handleRewordChange = (evt) => {
+  //   setVersesReword(evt.currentTaret.value);
+  // };
 
   return (
     <>
       <div>
         {/* original words */}
-        <table
+        <table className="w-3/5 m-auto mt-4 p-2"
           id="originalsTab1"
           contentEditable={true}
           suppressContentEditableWarning={true}
         >
           <tbody>
-            <tr>
-              <td>judge</td>
-              <td>raider</td>
+            <tr className="border-gray-400 border-2">
+              <td className="border-gray-400 border-2">judge</td>
+              <td className="border-gray-400 border-2">raider</td>
             </tr>
           </tbody>
         </table>
       {/* replacement words */}
-        <table
+      <table className="border-black border-1 w-3/5 m-auto mt-4 p-2"
           id="replaceTab1"
           contentEditable={true}
           suppressContentEditableWarning={true}
         >
           <tbody>
             <tr>
-              <td>tribal chieftain</td>
-              <td>marauder</td>
+            <td className="border-gray-200 border-2 border-b-0">tribal chieftain</td>
+              <td className="border-gray-200 border-2">marauder</td>
             </tr>
           </tbody>
         </table>
@@ -113,6 +128,7 @@ const SwapText = React.memo((props) => {
 
       <button className="bg-gray-300 p-2 rounded hover:scale-90" onClick={processReword}>Apply Rewording</button>
       <button className="bg-gray-300 p-2 rounded hover:scale-90" onClick={clearReword}>Clear 👇 Reword</button>
+      <button className="bg-gray-300 p-2 rounded hover:scale-90" onClick={addCells}>Add Cells</button>
     </div>
     </div>
       <div className="border-black border-2 w-3/5 m-auto mt-4 p-2">{versesReword}</div>
