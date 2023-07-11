@@ -66,7 +66,7 @@ td{
   }
 } */
 
-/* ! tailwindcss v3.1.8 | MIT License | https://tailwindcss.com */
+/* ! tailwindcss v3.3.2 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -96,6 +96,8 @@ td{
 2. Prevent adjustments of font size after orientation changes in iOS.
 3. Use a more readable tab size.
 4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
 */
 
 html {
@@ -108,6 +110,11 @@ html {
   /* 3 */
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
+  -webkit-font-feature-settings: normal;
+          font-feature-settings: normal;
+  /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
 }
 
 /*
@@ -474,6 +481,12 @@ video {
   height: auto;
 }
 
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
+}
+
 *, ::before, ::after{
   --tw-border-spacing-x:0;
   --tw-border-spacing-y:0;
@@ -488,6 +501,9 @@ video {
   --tw-pan-y: ;
   --tw-pinch-zoom: ;
   --tw-scroll-snap-strictness:proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
   --tw-ordinal: ;
   --tw-slashed-zero: ;
   --tw-numeric-figure: ;
@@ -535,6 +551,9 @@ video {
   --tw-pan-y: ;
   --tw-pinch-zoom: ;
   --tw-scroll-snap-strictness:proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
   --tw-ordinal: ;
   --tw-slashed-zero: ;
   --tw-numeric-figure: ;
@@ -582,6 +601,9 @@ video {
   --tw-pan-y: ;
   --tw-pinch-zoom: ;
   --tw-scroll-snap-strictness:proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
   --tw-ordinal: ;
   --tw-slashed-zero: ;
   --tw-numeric-figure: ;
@@ -615,16 +637,44 @@ video {
   --tw-backdrop-sepia: ;
 }
 
-.col-span-2{
-  grid-column:span 2 / span 2;
-}
-
 .col-span-1{
   grid-column:span 1 / span 1;
 }
 
+.col-span-2{
+  grid-column:span 2 / span 2;
+}
+
 .col-span-3{
   grid-column:span 3 / span 3;
+}
+
+.m-auto{
+  margin:auto;
+}
+
+.mb-4{
+  margin-bottom:1rem;
+}
+
+.mb-8{
+  margin-bottom:2rem;
+}
+
+.ml-48{
+  margin-left:12rem;
+}
+
+.ml-\[15\%\]{
+  margin-left:15%;
+}
+
+.mr-48{
+  margin-right:12rem;
+}
+
+.mr-\[15\%\]{
+  margin-right:15%;
 }
 
 .mt-12{
@@ -635,32 +685,12 @@ video {
   margin-top:0.5rem;
 }
 
-.ml-\[15\%\]{
-  margin-left:15%;
-}
-
-.mr-\[15\%\]{
-  margin-right:15%;
-}
-
-.ml-48{
-  margin-left:12rem;
+.mt-4{
+  margin-top:1rem;
 }
 
 .mt-8{
   margin-top:2rem;
-}
-
-.mb-8{
-  margin-bottom:2rem;
-}
-
-.mr-48{
-  margin-right:12rem;
-}
-
-.mt-4{
-  margin-top:1rem;
 }
 
 .flex{
@@ -675,12 +705,24 @@ video {
   display:grid;
 }
 
+.h-8{
+  height:2rem;
+}
+
+.w-3\/5{
+  width:60%;
+}
+
 .w-full{
   width:100%;
 }
 
 .grid-cols-10{
   grid-template-columns:repeat(10, minmax(0, 1fr));
+}
+
+.grid-cols-4{
+  grid-template-columns:repeat(4, minmax(0, 1fr));
 }
 
 .grid-cols-5{
@@ -713,12 +755,16 @@ video {
   border-radius:0.25rem;
 }
 
+.border{
+  border-width:1px;
+}
+
 .border-2{
   border-width:2px;
 }
 
-.border{
-  border-width:1px;
+.border-b-0{
+  border-bottom-width:0px;
 }
 
 .border-solid{
@@ -728,6 +774,16 @@ video {
 .border-black{
   --tw-border-opacity:1;
   border-color:rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.border-gray-200{
+  --tw-border-opacity:1;
+  border-color:rgb(229 231 235 / var(--tw-border-opacity));
+}
+
+.border-gray-400{
+  --tw-border-opacity:1;
+  border-color:rgb(156 163 175 / var(--tw-border-opacity));
 }
 
 .bg-gray-300{
@@ -753,12 +809,12 @@ video {
   line-height:1.75rem;
 }
 
-.font-extrabold{
-  font-weight:800;
-}
-
 .font-bold{
   font-weight:700;
+}
+
+.font-extrabold{
+  font-weight:800;
 }
 
 .text-gray-500{
@@ -769,6 +825,11 @@ video {
 .text-green-700{
   --tw-text-opacity:1;
   color:rgb(21 128 61 / var(--tw-text-opacity));
+}
+
+.text-red-400{
+  --tw-text-opacity:1;
+  color:rgb(248 113 113 / var(--tw-text-opacity));
 }
 
 .filter{
