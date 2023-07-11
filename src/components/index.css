@@ -2,12 +2,16 @@
     border-color: rgb(156 163 175);
     border-width: 2px;
     min-height:1.5rem;
-    width:200px;
+    width:250px;
 }
 
 .replacements td {
     border-color: rgb(192, 197, 205);
     border-width: 1px;
     min-height:1.5rem;
-    width:200px;
+    width:250px;
+}
+
+table{
+    width: 250px;
 }

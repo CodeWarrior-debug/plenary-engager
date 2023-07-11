@@ -5,6 +5,10 @@ import Select from "react-select";
 import SwapText from "../../components/SwapText";
 import { allChapsVersesArr } from "../../assets/allChapterVerses";
 
+// TODO: add a "clear" button to clear all the fields
+// TODO: add a "save" button to save the current state of the fields
+// TODO: prevent fetch if no book, chapter, or start and end verse is selected 
+
 export default function Home() {
   // States and Variables
   const booksArray = require("../../assets/books_w_chapters.json"); const [selectedOption, setSelectedOption] = useState("none"); const [selectedOption2, setSelectedOption2] = useState("none"); const [selectedOption3, setSelectedOption3] = useState("none"); const [selectedOption4, setSelectedOption4] = useState("none");
@@ -210,7 +214,7 @@ export default function Home() {
         Easy Button {/* why easy button? */}
       </button> 
       
-      <h3 className="text-center mt-4 font-bold text-red-400">Passage Re-worded</h3>
+      
     {/* DISPLAY OF SUBSTITUTE WORDS AND REWORDED TEXT */}
 <div >
         
