@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import "./index.css"
 
 const SwapText = React.memo((props) => {
   // KEY VARIABLES
@@ -9,13 +10,15 @@ const SwapText = React.memo((props) => {
   let substitutionVerses = props.verses;
   
   // TEST AREA
-const addCells = () => {
-  let row = mytab1.rows[0];
-  let cell = row.insertCell(-1);
-  let row2 = mytabl2.rows[0];
-  let cell2 = row2.insertCell(-1);
-  cell.outerHTML = "<td className='border-gray-400 border-2'></td>";
-  cell2.outerHTML = "<td className='border-gray-400 border-2'></td>";
+const addCells = async () => {
+  await mytab1.rows[0].insertCell(-1);
+  await mytabl2.rows[0].insertCell(-1);
+  
+
+  // let row2 = mytabl2.rows[0];
+  // let cell2 = row2.insertCell(-1);
+  // cell.outerHTML = "<td className='border-gray-400 border-2'></td>";
+  // cell2.outerHTML = "<td className='border-gray-400 border-2'></td>";
   
 
 };
@@ -102,14 +105,14 @@ const addCells = () => {
           suppressContentEditableWarning={true}
         >
           <tbody>
-            <tr className="border-gray-400 border-2">
-              <td className="border-gray-400 border-2">judge</td>
-              <td className="border-gray-400 border-2">raider</td>
+            <tr className="border-gray-400 border-2 h-8">
+              <td >judge</td>
+              <td >raider</td>
             </tr>
           </tbody>
         </table>
       {/* replacement words */}
-      <table className="border-black border-1 w-3/5 m-auto mt-4 p-2"
+      <table className="border-black border-1 w-3/5 m-auto mt-4 p-2 "
           id="replaceTab1"
           contentEditable={true}
           suppressContentEditableWarning={true}
