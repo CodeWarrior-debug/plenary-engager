@@ -4,6 +4,12 @@ import "../../App.css";
 import Select from "react-select";
 import SwapText from "../../components/SwapText";
 import { allChapsVersesArr } from "../../assets/allChapterVerses";
+import { useAtom } from "jotai";
+import { themeAtom } from "../../App";
+
+
+// export const testAtom = atom('jotai_test');
+
 
 // TODO: add a "clear" button to clear all the fields
 // TODO: add a "save" button to save the current state of the fields
@@ -11,6 +17,8 @@ import { allChapsVersesArr } from "../../assets/allChapterVerses";
 
 export default function Home() {
   // States and Variables
+  // const [testVal, setTestVal] = useAtom(testAtom);
+  const [theme] = useAtom(themeAtom);
   const booksArray = require("../../assets/books_w_chapters.json");
   const [selectedOption, setSelectedOption] = useState("none");
   const [selectedOption2, setSelectedOption2] = useState("none");
@@ -33,6 +41,11 @@ export default function Home() {
     setVerses("");
     setVerseArr([]);
     setChaptersArr([]);
+  };
+
+  const testJotaiFunc = async () => {
+    // setTestVal("testPassed");
+    console.log("hello");
   };
   // END TESTING AREA
 
@@ -232,6 +245,8 @@ export default function Home() {
         </div>
         <div className="col-span-1"></div>
       </div>
+      {/* <button onClick={testJotaiFunc}>TEST JOTAI</button> */}
+      <div>Our theme is {theme} </div>
       <button
         onClick={getVerses(
           bookLabel,
@@ -252,6 +267,7 @@ export default function Home() {
       </button>
 
       {/* DISPLAY OF SUBSTITUTE WORDS AND REWORDED TEXT */}
+      {/* <div>{testAtom}</div> */}
       <div>
         <SwapText verses={verses} />
       </div>

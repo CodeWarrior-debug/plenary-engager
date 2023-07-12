@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./index.css";
+import { useAtom } from "jotai";
+import { themeAtom } from "../App";
+
 
 const SwapText = React.memo((props) => {
   // KEY VARIABLES
@@ -9,6 +12,13 @@ const SwapText = React.memo((props) => {
   let substitutionVerses = props.verses;
 
   // TEST AREA
+  const [theme, setTheme] = useAtom(themeAtom);
+
+  const changeTheme = () => {
+    let newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
+
   //*****END TEST AREA
 
   const addCells = async () => {
@@ -90,6 +100,7 @@ const SwapText = React.memo((props) => {
 
   return (
     <>
+    
       <div className="grid grid-cols-4 mb-4">
         <div className="col-span-1"></div>
         <div className="col-span-1">
@@ -127,7 +138,11 @@ const SwapText = React.memo((props) => {
           </table>
         </div>
 
-        <div className="col-span-1"></div>
+        <div className="col-span-1">
+          <p>
+            {/* {testAtom} */}
+          </p>
+        </div>
       </div>
 
       <div className="grid place-items-center">
@@ -162,6 +177,8 @@ const SwapText = React.memo((props) => {
       >
         {versesReword}
       </p>
+      <p>Our theme is {theme}</p>
+      <button onClick={changeTheme}>Change Theme</button>
     </>
   );
 });
