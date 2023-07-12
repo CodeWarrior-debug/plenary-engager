@@ -103,8 +103,7 @@ const SwapText = React.memo((props) => {
           >
             <tbody>
               <tr className="border-gray-400 border-2 h-8">
-                <td>judge</td>
-                <td>raider</td>
+                <td></td>
               </tr>
             </tbody>
           </table>
@@ -122,10 +121,7 @@ const SwapText = React.memo((props) => {
           >
             <tbody>
               <tr>
-                <td className="border-gray-200 border-2 border-b-0">
-                  tribal chieftain
-                </td>
-                <td className="border-gray-200 border-2">marauder</td>
+                <td></td>
               </tr>
             </tbody>
           </table>
@@ -156,10 +152,13 @@ const SwapText = React.memo((props) => {
           </button>
         </div>
       </div>
-      <h3 className="text-center mt-4 font-bold text-red-400">Passage Re-worded</h3>
+      <h3 className="text-center mt-4 font-bold text-red-400">
+        Passage Re-worded
+      </h3>
       <p
         className="border-black border-2 w-3/5 m-auto mt-4 p-2"
         contentEditable={true}
+        suppressContentEditableWarning={true}
       >
         {versesReword}
       </p>

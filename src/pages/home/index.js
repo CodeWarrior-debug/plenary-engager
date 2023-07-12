@@ -7,25 +7,61 @@ import { allChapsVersesArr } from "../../assets/allChapterVerses";
 
 // TODO: add a "clear" button to clear all the fields
 // TODO: add a "save" button to save the current state of the fields
-// TODO: prevent fetch if no book, chapter, or start and end verse is selected 
+// TODO: prevent fetch if no book, chapter, or start and end verse is selected
 
 export default function Home() {
   // States and Variables
-  const booksArray = require("../../assets/books_w_chapters.json"); const [selectedOption, setSelectedOption] = useState("none"); const [selectedOption2, setSelectedOption2] = useState("none"); const [selectedOption3, setSelectedOption3] = useState("none"); const [selectedOption4, setSelectedOption4] = useState("none");
+  const booksArray = require("../../assets/books_w_chapters.json");
+  const [selectedOption, setSelectedOption] = useState("none");
+  const [selectedOption2, setSelectedOption2] = useState("none");
+  const [selectedOption3, setSelectedOption3] = useState("none");
+  const [selectedOption4, setSelectedOption4] = useState("none");
   const verseCount = require("../../assets/book_chapters_w_versecounts.json");
   const chosen_translation = "bbe";
 
+  // TESTING AREA
+  const clearAll = async () => {
+    setSelectedOption("none");
+    setSelectedOption2("none");
+    setSelectedOption3("none");
+    setSelectedOption4("none");
+
+    setBookLabel("");
+    setChapterStart("");
+    setStartVerse("");
+    setEndVerse("");
+    setVerses("");
+    setVerseArr([]);
+    setChaptersArr([]);
+  };
+  // END TESTING AREA
+
   //Verse Methods
-  const [startVerse, setStartVerse] = useState(""); const [endVerse, setEndVerse] = useState(""); const [verses, setVerses] = useState(""); const [verseArr, setVerseArr] = useState([]);
+  const [startVerse, setStartVerse] = useState("");
+  const [endVerse, setEndVerse] = useState("");
+  const [verses, setVerses] = useState("");
+  const [verseArr, setVerseArr] = useState([]);
 
   //Chapter Methods
-  const [chaptersArr, setChaptersArr] = useState([]); const [chapterStart, setChapterStart] = useState("");
+  const [chaptersArr, setChaptersArr] = useState([]);
+  const [chapterStart, setChapterStart] = useState("");
 
   //Book Methods
   const [bookLabel, setBookLabel] = useState("");
 
   //Common Methods
-  const handleTypeSelect = (e) => { setSelectedOption(e.value); }; const handleTypeSelect2 = (e) => { setSelectedOption2(e.value); }; const handleTypeSelect3 = (e) => { setSelectedOption3(e.value); }; const handleTypeSelect4 = (e) => { setSelectedOption4(e.value); };
+  const handleTypeSelect = (e) => {
+    setSelectedOption(e.value);
+  };
+  const handleTypeSelect2 = (e) => {
+    setSelectedOption2(e.value);
+  };
+  const handleTypeSelect3 = (e) => {
+    setSelectedOption3(e.value);
+  };
+  const handleTypeSelect4 = (e) => {
+    setSelectedOption4(e.value);
+  };
 
   const getVerses = (
     bookLabel,
@@ -46,9 +82,7 @@ export default function Home() {
     }
   };
 
-  const handleStore = () => {
-
-  };
+  
 
   const limitArr = (e, arr) => {
     //returns chapters and verses list that is <= the number of chapters/verses in book
@@ -148,7 +182,10 @@ export default function Home() {
         substitutes. Convey the sense of Scripture that may come across better
         in the original language, another translation and/or manner.
       </div>
-  {/* SELECTORS */}
+      <button className="bg-red-500 text-white" onClick={clearAll}>
+        CLEAR-ALL
+      </button>
+      {/* SELECTORS */}
       <div className=" ml-48 mt-8 w-full grid grid-cols-10 place-items-start mb-8 mr-48">
         <div className="col-span-2"></div>
         <div className="col-span-1">
@@ -170,7 +207,7 @@ export default function Home() {
 
         <div className="col-span-2"></div>
       </div>
-  {/* SCRIPTURE DISPLAY */}
+      {/* SCRIPTURE DISPLAY */}
       <h2 className="text-center font-extrabold text-4xl mt-12 text-gray-500">
         Interpretext Generator
       </h2>
@@ -212,17 +249,12 @@ export default function Home() {
         }}
       >
         Easy Button {/* why easy button? */}
-      </button> 
-      
-      
-    {/* DISPLAY OF SUBSTITUTE WORDS AND REWORDED TEXT */}
-<div >
-        
-      <SwapText verses={verses} />
-</div>
+      </button>
 
-
-
+      {/* DISPLAY OF SUBSTITUTE WORDS AND REWORDED TEXT */}
+      <div>
+        <SwapText verses={verses} />
+      </div>
     </>
   );
 }
